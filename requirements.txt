@@ -1,0 +1,7 @@
+#loading of meteological data
+cdsapi==0.7.7
+xarray==2025.6.1
+cfgrib
+
+#plotting
+matplotlib==3.10.9
