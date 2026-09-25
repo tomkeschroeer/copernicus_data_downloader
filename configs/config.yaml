@@ -1,0 +1,28 @@
+output_path: ./outputs
+
+Datasets:
+  ds_1:
+    dataset_name: 'cams-europe-air-quality-reanalyses'
+    request: {
+          "variable": [
+              "carbon_monoxide",
+              # "nitrogen_dioxide",
+              # "ozone",
+              # "particulate_matter_2.5um",
+              # "particulate_matter_10um",
+              # "sulphur_dioxide"
+          ],
+          "model": ["emep"],
+          "level": ["50"],
+          "type": ["interim_reanalysis"],
+          "year": [
+              "2024"
+          ],
+          "month": [
+              "01", "02", "03",
+              # "04", "05", "06",
+              # "07", "08", "09",
+              # "10", "11", "12"
+          ]
+    }
+    target: 'test.nc'
