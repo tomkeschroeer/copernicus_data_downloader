@@ -42,3 +42,5 @@ Once your download is defined in the config, run:
 python download_data.py -c path/to/your/config
 ```
 This downloads a zip folder that contains the files in a NetCDF format, sorted by area and month. 
+
+The variables are each stored in a separate file in a 3-dimensional array with the dimensions `(time, longitude, latidute)`. The time is stored as the hour of the month. The data is stored separately per month. The variable `time` has therefore $24\cdot N_{days}$ entries with $N_{days}$ being the number of days in the month considered.
