@@ -33,10 +33,10 @@ Before getting started with this repository you need some preparation. The CAMS 
 
 Once this was setup, you can configure the download yourself or use [this website](https://ads.atmosphere.copernicus.eu/datasets/cams-europe-air-quality-reanalyses?tab=download) to give you the API command. 
 
-<!-- In order to get the area of Geneva, use
+In order to get the area of Geneva, use
 ```
 area: [46.35, 5.95, 46.05, 6.35]
-``` -->
+```
 Once your download is defined in the config, run:
 ```
 python download_data.py -c path/to/your/config
