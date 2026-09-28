@@ -41,3 +41,4 @@ Once your download is defined in the config, run:
 ```
 python download_data.py -c path/to/your/config
 ```
+This downloads a zip folder that contains the files in a NetCDF format, sorted by area and month. 
