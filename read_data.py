@@ -34,12 +34,13 @@ for ds in datasets:
         continue
     current_target = config.Datasets[ds]["target"]
     path_to_zip_file = f"{config.output_path}/{current_target}".replace("//","/'")
-    unzipped_folder_path = f"{path_to_zip_file}_unzipped"
+    unzipped_folder_path = f"{config.output_path}"
     with zipfile.ZipFile(path_to_zip_file, 'r') as zip_ref:
         os.makedirs(unzipped_folder_path, exist_ok=True)
         zip_ref.extractall(unzipped_folder_path)
         for file in glob(f"{unzipped_folder_path}/*nc"):
             # This extraction expects that the file is saved as cams.eaq.ira.EMPa.var.laltitude.year-month.area-subset.area.nc"
+            breakpoint()
             file_info = file.split("/")[-1].split("cams.eaq.ira.EMPa.")[1].split(".")
             varname = file_info[0]
 
@@ -52,7 +53,7 @@ for ds in datasets:
             lat = data.variables["lat"][:]
             lon = data.variables["lon"][:]
             var = data.variables[varname][:]
-            file_df = f"{}"
+            file_df = file.replace(".nc",".h5")
 
             # Expected structure of the data: (time, lat, lon)
             lon = np.tile(np.array(lon), len(data.variables["lat"])*len(data.variables["time"]))
