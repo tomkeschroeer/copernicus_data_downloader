@@ -70,6 +70,6 @@ source setup.sh
 ```
 afterwards, run
 ```
-snakemake
+snakemake -c 1
 ```
 This writes the configs, downloads all files, transformes them and merges them into one file per variable.
