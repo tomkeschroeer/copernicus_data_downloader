@@ -14,7 +14,7 @@ files_to_merge = sorted(glob(f"{directory}/cams*.h5"))
 df_complete = None
 
 for file in files_to_merge:
-    subcon = file.split(".")
+    subcon = file.split("cams")[1].split(".")
     year = subcon[6].split("-")[0]
     month = subcon[6].split("-")[1]
     df = pd.read_hdf(file)
@@ -24,5 +24,5 @@ for file in files_to_merge:
         df_complete = df
     else:
         df_complete = pd.concat((df_complete, df))
-variable = directory.split("_")[-1]
+variable = directory.split("/outputs_")[-1]
 df_complete.to_hdf(f"{directory}/{variable}_merged_files.h5", key="d")
