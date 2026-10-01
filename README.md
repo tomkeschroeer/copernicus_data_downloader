@@ -44,3 +44,32 @@ python download_data.py -c path/to/your/config
 This downloads a zip folder that contains the files in a NetCDF format, sorted by area and month. 
 
 The variables are each stored in a separate file in a 3-dimensional array with the dimensions `(time, longitude, latidute)`. The time is stored as the hour of the month. The data is stored separately per month. The variable `time` has therefore $24\cdot N_{days}$ entries with $N_{days}$ being the number of days in the month considered.
+
+To help writing the config files, the script `write_configs` can be used. For this, a minimal set of parameters need to be passed through a config file. The following arguments have to be defined:
+
+| Variable | Description <div style="width:330px">| Potential Values |
+|----------|---------------------|----------|
+| variables | dictionary of the names of variables and the short format as variable:short form | \{"ozone": "o3", "nitrogen_dioxide":"no2", "particulate_matter_2.5um": "pm2p5", "particulate_matter_10um": "pm10", "sulphur_dioxide": "so2" \} |
+| years | years to download as strings | \["2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025" \] |
+| months | months to diwnload as strings | \["01","02","03","04","05","06","07',"08","09","10","11","12"\]
+
+In addition the `level`, `type`, `model` can be set, possible values can be found [here](https://ads.atmosphere.copernicus.eu/datasets/cams-europe-air-quality-reanalyses?tab=download).
+
+In order to store the data in a zip folder with `nc` file, run 
+```
+python download_data.py -c path/to/your/config -d names,of,datasets,to,process
+```
+If all datasets should be transformed into an `h5` file, the `-d` flag can be dropped. Afterwards, the files in one output folder can also be merged into one file by adding the year and month as extra columns. Run:
+In order to store the data in an `h5` file, run 
+```
+python merge_files.py -d path/to/your/directory/with/files/to/merge
+```
+If all scripts should be performed automatically, you can use snakemake. Define the datasets you would like to download in the `snakemake_config.yaml`. If you use this the first time, run
+```
+source setup.sh
+```
+afterwards, run
+```
+snakemake
+```
+This writes the configs, downloads all files, transformes them and merges them into one file per variable.

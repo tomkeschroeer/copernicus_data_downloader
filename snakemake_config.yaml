@@ -1,16 +1,17 @@
+base_dir: /home/tomke/BNF_GESICA/copernicus_data_downloader
+
 months: [
-    "01"
-    , "02", "03", "04"]
-#     "05", "06", "07", "08", 
-#     "09", "10", "11", "12"
-# ]
-years: ["2022"]
-#, "2023"]
+    "01", "02", "03", "04",
+    "05", "06", "07", "08", 
+    "09", "10", "11", "12"
+]
+
+years: ["2022", "2023"]
 
 variables: {
   "ozone": "o3",
-  # "nitrogen_dioxide":"no2",
-  # "particulate_matter_2.5um": "pm2p5",
-  # "particulate_matter_10um": "pm10",
-  # "sulphur_dioxide": "so2"
+  "nitrogen_dioxide":"no2",
+  "particulate_matter_2.5um": "pm2p5",
+  "particulate_matter_10um": "pm10",
+  "sulphur_dioxide": "so2"
 }
