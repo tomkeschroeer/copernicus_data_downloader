@@ -40,7 +40,6 @@ for ds in datasets:
         zip_ref.extractall(unzipped_folder_path)
         for file in glob(f"{unzipped_folder_path}/*nc"):
             # This extraction expects that the file is saved as cams.eaq.ira.EMPa.var.laltitude.year-month.area-subset.area.nc"
-            breakpoint()
             file_info = file.split("/")[-1].split("cams.eaq.ira.EMPa.")[1].split(".")
             varname = file_info[0]
 
