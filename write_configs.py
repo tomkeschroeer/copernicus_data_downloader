@@ -14,7 +14,7 @@ config_path = args.config_path
 output_dir = args.outputdir
 config_file = args.config_file
 
-config_path = config_path.replace(".yaml","")
+config_path = (config_path.replace(".yaml","") + "/config").replace("//","/")
 
 if config_file is None:
     raise TypeError(f"No config_file file passed")
@@ -59,9 +59,10 @@ for y in years_to_consider:
             mod_dataset["request"]["month"] = [m]
             mod_dataset["target"] = f"{v}_{y}_{m}"
             config_data["Datasets"][f"ds_{m}"] = mod_dataset
-        config_data["output_path"] = f"{output_dir}_{v}"
+        config_data["output_path"] = f"{output_dir}_{v}" if config.get("postfix", None) is None else f"{output_dir}_{v}_{config['postfix']}"
             # breakpoint()
-    
-        with open(f'{config_path}_{v}_{y}.yaml', 'w') as outfile:
+        
+        conf_path = f'{config_path}_{v}_{y}.yaml' if config.get("postfix", None) is None else f"{config_path}_{v}_{y}_{config['postfix']}.yaml"
+        with open(conf_path, 'w') as outfile:
             yaml.dump(config_data, outfile, default_flow_style=None)
 

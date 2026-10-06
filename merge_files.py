@@ -24,5 +24,6 @@ for file in files_to_merge:
         df_complete = df
     else:
         df_complete = pd.concat((df_complete, df))
-variable = directory.split("/outputs_")[-1]
+
+variable = directory.split("/outputs_")[-1].split("/")[0]
 df_complete.to_hdf(f"{directory}/{variable}_merged_files.h5", key="d")
