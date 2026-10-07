@@ -28,7 +28,7 @@ with open(config_file, 'r') as file:
         raise ValueError(f"Error parsing YAML file: {exc}")
 
 months_to_consider = config["months"]
-vars_to_consider = list(config["variables"].keys())
+vars_to_consider = config["variables"]
 years_to_consider = config["years"]
 
 config_data = {
@@ -40,9 +40,9 @@ def_dataset =  {
             "dataset_name": "cams-europe-air-quality-reanalyses",
             "request": {
                 "variable": [],
-                "model": config.get("model","emep"),
-                "level": config.get("level","50"),
-                "type": config.get("type","interim_reanalysis"),
+                "model": config.get("model",["emep"]),
+                "level": config.get("level",["50"]),
+                "type": config.get("type",["interim_reanalysis"]),
                 "year": [],
                 "month": [],
                 "area": config.get("area",[46.35, 5.95, 46.05, 6.35])
