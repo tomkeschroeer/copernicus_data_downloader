@@ -19,6 +19,14 @@ args = parser.parse_args()
 config_path = args.config
 datasets = args.datasets
 
+variables_dict = {
+  "ozone": "o3",
+  "nitrogen_dioxide":"no2",
+  "particulate_matter_2.5um": "pm2p5",
+  "particulate_matter_10um": "pm10",
+  "sulphur_dioxide": "so2"
+}
+
 config = ConfigLoader(config_path)
 config.load_config()
 
@@ -38,11 +46,11 @@ for ds in datasets:
     with zipfile.ZipFile(path_to_zip_file, 'r') as zip_ref:
         os.makedirs(unzipped_folder_path, exist_ok=True)
         zip_ref.extractall(unzipped_folder_path)
+        varnames = config.Datasets[ds]["request"]["variable"]
         for file in glob(f"{unzipped_folder_path}/*nc"):
-            # This extraction expects that the file is saved as cams.eaq.ira.EMPa.var.laltitude.year-month.area-subset.area.nc"
-            file_info = file.split("/")[-1].split("cams.eaq.ira.EMPa.")[1].split(".")
-            varname = file_info[0]
-
+            for var in varnames:
+                if variables_dict[var] in file:
+                    varname = variables_dict[var]
             data = Dataset(file)
             hours = data.variables["time"][:].data % 24
 
