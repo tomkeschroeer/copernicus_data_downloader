@@ -55,9 +55,9 @@ To help writing the config files, the script `write_configs` can be used. For th
 
 In addition the `level`, `type`, `model` can be set, possible values can be found [here](https://ads.atmosphere.copernicus.eu/datasets/cams-europe-air-quality-reanalyses?tab=download).
 
-In order to store the data in a zip folder with `nc` file, run 
+In order to store the data in a zip folder with `nc` files and transform those into `h5` files, run 
 ```
-python download_data.py -c path/to/your/config -d names,of,datasets,to,process
+python read_data.py -c path/to/your/config -d names,of,datasets,to,process
 ```
 If all datasets should be transformed into an `h5` file, the `-d` flag can be dropped. Afterwards, the files in one output folder can also be merged into one file by adding the year and month as extra columns. Run:
 In order to store the data in an `h5` file, run 
