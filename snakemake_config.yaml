@@ -1,24 +1,22 @@
-base_dir: /home/tomke/BNF_GESICA/copernicus_data_downloader
+base_dir: $base_dir
 
 months: [
-  "01", 
-  # "02", "03", "04",
-  # "05", "06", "07", "08", 
-  # "09", "10", "11", "12"
+  "01", "02", "03", "04",
+  "05", "06", "07", "08", 
+  "09", "10", "11", "12"
 ]
 
 years: [
-  "2018",
-  #  "2014", "2015", "2016", "2017", 
-  # "2018", "2019", "2020", "2021", "2022", 
-  # "2023", "2024", 
+  "2018", "2014", "2015", "2016", "2017", 
+  "2018", "2019", "2020", "2021", "2022", 
+  "2023", "2024", 
   # only available for interim analysis: "2025"
 ]
 variables: [
-  # "ozone",
-  # "nitrogen_dioxide",
-  # "particulate_matter_2.5um",
-  # "particulate_matter_10um",
+  "ozone",
+  "nitrogen_dioxide",
+  "particulate_matter_2.5um",
+  "particulate_matter_10um",
   "sulphur_dioxide"
 ]
 
@@ -27,17 +25,17 @@ level: ['0']
 
 model: [
   "ensemble",
-  # "match",
-  # "emep",
-  # "gemaq",
-  # "mocage",
-  # "silam",
-  # "euradim",
-  # "dehm",
-  # "chimere",
-  # "lotos",
-  # "minni",
-  # "monarch",
+  "match",
+  "emep",
+  "gemaq",
+  "mocage",
+  "silam",
+  "euradim",
+  "dehm",
+  "chimere",
+  "lotos",
+  "minni",
+  "monarch",
 ]
 
 
@@ -46,8 +44,9 @@ type: [
   # "interim_reanalysis"
 ]
 
-postfix: "testttt"
+area: [45.82, 5.96, 47.81, 10.49]
 
+postfix: "wholeCH"
 
 ### DO NOT TOUCH:
 
