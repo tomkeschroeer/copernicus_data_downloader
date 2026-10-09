@@ -1,14 +1,18 @@
 #loading of meteological data
 cdsapi==0.7.7
-netCDF4==1.7.4
+netCDF4==1.7.2
 cfgrib
 
 #plotting
-matplotlib==3.10.9
+matplotlib==3.9.4
 
 PyYAML==6.0.3
-tables==3.10.1
+tables==3.9.2
 
 #snakemake
 snakemake==7.32.4
 pulp==2.7.0
+
+envsubst==0.1.5
+pandas==2.3.3
+numpy==1.26.4
